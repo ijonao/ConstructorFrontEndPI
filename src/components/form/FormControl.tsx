@@ -21,7 +21,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 
 type Credencial = {
     email: string
-    senha: string
+    password: string
 }
 
 type PropriedadesTipagem = {
@@ -34,7 +34,7 @@ export const Login = (propriedade: PropriedadesTipagem) => {
         email: z.string().email({
             message: "E-mail invalido !"
         }),
-        senha: z.string().min(6, {
+        password: z.string().min(6, {
             message: "Senha invalida!"
         })
     })
@@ -42,7 +42,7 @@ export const Login = (propriedade: PropriedadesTipagem) => {
         resolver: zodResolver(formSchema),
         defaultValues: {
           email: "",
-          senha: ""
+          password: ""
         },
       })
 
@@ -85,7 +85,7 @@ export const Login = (propriedade: PropriedadesTipagem) => {
                     {/* Campo de senha */}
                     <FormField
                         control={form.control}
-                        name="senha"
+                        name="password"
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel className="text-gray-700">Senha</FormLabel>
@@ -102,7 +102,6 @@ export const Login = (propriedade: PropriedadesTipagem) => {
                         )}
                     />
 
-                    {/* Botão estilizado */}
                     <Button 
                         className="w-72 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-all duration-300" 
                         type="submit"
